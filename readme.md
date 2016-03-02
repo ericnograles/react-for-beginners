@@ -23,3 +23,5 @@ The intent of this starter project is to educate newcomers to React on the basic
 
 # Coming Soon
 * A `redux` branch that introduces [Redux](https://github.com/reactjs/redux) concepts to state management
+* SASS support
+* Prettier templates from MDL
