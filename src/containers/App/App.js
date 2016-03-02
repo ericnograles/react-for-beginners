@@ -12,6 +12,7 @@ export default class App extends Component {
       <Router history={browserHistory}>
         <Route path="/" component={Home}></Route>
         <Route path="/sample" component={SampleContainer}></Route>
+        <Route path="*" component={Home}></Route>
       </Router>
     );
   }

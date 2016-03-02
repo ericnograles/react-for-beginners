@@ -12,5 +12,8 @@ npm install -g webpack webpack-dev-server
 # Local NPM install
 npm install
 
-# Start!
+# Webpack
+webpack
+
+# Start the dev server
 webpack-dev-server --content-base dist/

@@ -1,3 +1,5 @@
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
   context: __dirname + "/src",
   entry: {
@@ -22,10 +24,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
-      }
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+      },
     ],
   },
+
+  plugins: [
+    new ExtractTextPlugin("app.css")
+  ],
 
   devServer: {
     historyApiFallback: true
