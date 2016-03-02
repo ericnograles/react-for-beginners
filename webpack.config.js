@@ -26,6 +26,10 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
+      {
+        test: /\.jpe?g$|\.gif$|\.ico$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        loader: "file?name=images/[name].[ext]"
+      }
     ],
   },
 
