@@ -31,6 +31,14 @@ export default class Home extends Component {
               <p>
                 React is a framework based on components.  Instead of building webpages as huge pieces of DOM states, we tend to think of each page as a "container" for "components".
               </p>
+              <h3>Component States</h3>
+              <p>
+                In practice, only containers should be stateful.  Components should be as stateless as possible.  This is not a hard and fast rule, as there could be scenarios where you must maintain state in a component -- for example, to initiate animations.
+              </p>
+              <h3>Unidirectional Binding</h3>
+              <p>
+                There are two accepted architectures for data flow and binding in React: Flux and Redux.  Both, while mechanically similar, have some key differences.
+              </p>
             </div>
           </div>
           <footer className="demo-footer mdl-mini-footer">

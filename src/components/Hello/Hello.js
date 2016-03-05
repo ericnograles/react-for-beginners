@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-export default class Sample extends Component {
+export default class Hello extends Component {
   render() {
     return (
       <div className="greeting">

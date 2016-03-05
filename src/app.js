@@ -1,6 +1,11 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App/App';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import configureStore from './store/configureStore';
+
+const store = configureStore();
 
 // Stylesheets
 require('./assets/styles/main.css');
@@ -9,6 +14,8 @@ require('./assets/styles/main.css');
 require('./assets/images/react-favicon.ico');
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );
