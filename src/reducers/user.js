@@ -35,7 +35,8 @@ export function user(state = InitialStates.user, action) {
     case RECEIVE_LOGIN:
       return Object.assign({}, state, {
         email: action.email,
-        profile: action.profile
+        profile: action.profile,
+        error: action.error
       });
     case LOGOUT:
       return Object.assign({}, state, {

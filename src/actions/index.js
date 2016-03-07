@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import * as FirebaseService from '../services/firebase';
 
 export const KEYPRESS_EMAIL = 'KEYPRESS_EMAIL';
 export const KEYPRESS_PASSWORD = 'KEYPRESS_PASSWORD';
@@ -27,20 +28,21 @@ export function requestLogin(email) {
   };
 }
 
-function receiveLogin(email, json) {
+function receiveLogin(email, response) {
   return {
     type: RECEIVE_LOGIN,
     email: email,
-    profile: json
+    profile: response.data,
+    error: response.error
   };
 }
 
 export function login(email, password) {
   return dispatch => {
     dispatch(requestLogin(email));
-    return fetch('http://todo/login/url')
-      .then(response => response.json())
-      .then(json => dispatch(receiveLogin(email, json)));
+    return FirebaseService.login(email, password)
+      .then(json => dispatch(receiveLogin(email, {data: json})))
+      .catch(error => dispatch(receiveLogin(email, {error: error})));
   }
 }
 

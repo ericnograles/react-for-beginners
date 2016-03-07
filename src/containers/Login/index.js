@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { keyPressEmail, keyPressPassword, requestLogin, login } from '../../actions';
+
+import LoginForm from '../../components/LoginForm';
 
 class Login extends Component {
   constructor(props) {
@@ -9,6 +12,12 @@ class Login extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.user) {
+      browserHistory.push('/sample');
+    }
   }
 
   handleEmail(email) {
@@ -26,9 +35,18 @@ class Login extends Component {
   }
 
   render() {
+    const { email, password, user } = this.props;
+    const hasLoginError = this.props.user.error;
     return (
       <div>
-        TODO: LoginForm forthcoming
+        <LoginForm email={email}
+                   password={password}
+                   user={user}
+                   handleEmail={this.handleEmail}
+                   handlePassword={this.handlePassword} />
+        <div className="login-error">
+          {hasLoginError ? 'Error logging in. ' + this.props.user.error : null}
+        </div>
       </div>
     )
   }
@@ -39,10 +57,11 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const { email, password } = state;
+  const { email, password, user } = state;
   return {
     email,
-    password
+    password,
+    user
   };
 }
 
