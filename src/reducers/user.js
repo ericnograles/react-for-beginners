@@ -1,5 +1,30 @@
-import { REQUEST_LOGIN, RECEIVE_LOGIN, LOGOUT } from '../actions';
-import * as InitialStates from '../constants/InitialStates';
+import {
+  REQUEST_LOGIN,
+  RECEIVE_LOGIN,
+  LOGOUT,
+  KEYPRESS_EMAIL,
+  KEYPRESS_PASSWORD
+} from '../actions';
+
+import * as InitialStates from '../constants/InitialStates'; // TODO: Not sure if this is even necessary
+
+export function email(state = null, action) {
+  switch (action.type) {
+    case KEYPRESS_EMAIL:
+      return action.email;
+    default:
+      return state;
+  }
+}
+
+export function password(state = null, action) {
+  switch (action.type)  {
+    case KEYPRESS_PASSWORD:
+      return action.password;
+    default:
+      return state;
+  }
+}
 
 export function user(state = InitialStates.user, action) {
   switch (action.type) {

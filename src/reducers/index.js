@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
-import { user } from './user';
+import { email, password, user } from './user';
 
 const rootReducer = combineReducers({
+  email,
+  password,
   user
 });
 
